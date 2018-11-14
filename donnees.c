@@ -3,26 +3,28 @@
 #include <stdlib.h>
 #include "donnees.h"
 
-Valeurs* stocker ( int *size , Valeurs *vlist) // création des listes chianées
+Valeurs* stocker (Valeurs* vlist) // création des listes chianées
 {
 
     FILE* fichier = NULL; // initialisation
     fichier = fopen("battements.csv","r");// ouverture du fichier
+
     if (fichier != NULL)// vérification
     {
-        int temps, poul;// utiliser pour chercher et mettre les valeurs dans le tableau
-        while(fscanf(fichier,"%i ; %i",&poul, &temps)!=EOF)
+
+        int temps= 0 ;
+
+        int i = 0;
+        int poul = 0 ;// utiliser pour chercher et mettre les valeurs dans le tableau
+        while(fscanf(fichier,"%i ; %i",&vlist[i].poul, &vlist[i].temps)!=EOF)//stocker dans le tableau
             {
-            Valeurs v;// structure Valeurs
-            v.poul = poul;// mémoriser poul dans la structure
-            v.temps = temps;//mémoriser temps dans la structure
-            vlist[*size] = v;// mettre la stucture dans le tableau
-            (*size)++;// augmenter le size de 1
+                i++;// avancer le tableau
             }
 
      fclose(fichier);// fermer le fichier
 
  }
+
  return vlist;
 
 }

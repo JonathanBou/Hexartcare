@@ -11,8 +11,5 @@ struct Valeurs
     int poul;
 };
 
-Valeurs* stocker ( int *size, Valeurs *vlist);
-
-
 #endif // DONNEES_H
 
